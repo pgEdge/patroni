@@ -3,16 +3,7 @@ Tequila: A Template for PostgreSQL HA with etcd3
 ------------------------------------------------
 
 Tequila is a template for high availability (HA) PostgreSQL solutions using Python3. It is far from being a one-size-fits-all or plug-and-play replication system. 
-It will have its own caveats. Use wisely.
-
-Currently supported PostgreSQL versions: 15 to 16.
-
-
-=================
-How Tequila Works
-=================
-
-Tequila is a fork of Patroni.
+It will have its own caveats. Use wisely.  Currently supported PostgreSQL versions: 15 to 16.  Tequila is a fork of Patroni.
 
 ===================================
 Technical Requirements/Installation
