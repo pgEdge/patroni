@@ -286,21 +286,21 @@ class ConfigHandler(object):
     #    check_function -- if the new value is not correct must return `!False`
     #    min_version -- major version of PostgreSQL when parameter was introduced
     CMDLINE_OPTIONS = CaseInsensitiveDict({
-        'listen_addresses': (None, _false_validator, 90100),
-        'port': (None, _false_validator, 90100),
+    #    'listen_addresses': (None, _false_validator, 90100),
+    #    'port': (None, _false_validator, 90100),
         'cluster_name': (None, _false_validator, 90500),
-        'wal_level': ('hot_standby', EnumValidator(('hot_standby', 'replica', 'logical')), 90100),
-        'hot_standby': ('on', _bool_is_true_validator, 90100),
-        'max_connections': (100, IntValidator(min=25), 90100),
-        'max_wal_senders': (10, IntValidator(min=3), 90100),
-        'wal_keep_segments': (8, IntValidator(min=1), 90100),
-        'wal_keep_size': ('128MB', IntValidator(min=16, base_unit='MB'), 130000),
-        'max_prepared_transactions': (0, IntValidator(min=0), 90100),
-        'max_locks_per_transaction': (64, IntValidator(min=32), 90100),
-        'track_commit_timestamp': ('off', _bool_validator, 90500),
-        'max_replication_slots': (10, IntValidator(min=4), 90400),
-        'max_worker_processes': (8, IntValidator(min=2), 90400),
-        'wal_log_hints': ('on', _bool_is_true_validator, 90400)
+    #    'wal_level': ('hot_standby', EnumValidator(('hot_standby', 'replica', 'logical')), 90100),
+    #    'hot_standby': ('on', _bool_is_true_validator, 90100),
+    #    'max_connections': (100, IntValidator(min=25), 90100),
+    #    'max_wal_senders': (10, IntValidator(min=3), 90100),
+    #    'wal_keep_segments': (8, IntValidator(min=1), 90100),
+    #    'wal_keep_size': ('128MB', IntValidator(min=16, base_unit='MB'), 130000),
+    #    'max_prepared_transactions': (0, IntValidator(min=0), 90100),
+    #    'max_locks_per_transaction': (64, IntValidator(min=32), 90100),
+    #    'track_commit_timestamp': ('off', _bool_validator, 90500),
+    #    'max_replication_slots': (10, IntValidator(min=4), 90400),
+    #    'max_worker_processes': (8, IntValidator(min=2), 90400),
+    #    'wal_log_hints': ('on', _bool_is_true_validator, 90400)
     })
 
     _RECOVERY_PARAMETERS = CaseInsensitiveSet(recovery_parameters.keys())
