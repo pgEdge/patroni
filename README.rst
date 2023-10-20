@@ -1,6 +1,6 @@
 
-staz: A Template for pgEdge's Spock Three AZ Clustering
--------------------------------------------------------
+staz: pgEdge's Spock Three AZ Clustering
+----------------------------------------
 
 Staz is a template for high availability (HA) PostgreSQL solutions using Python3. It is far from being a one-size-fits-all or plug-and-play replication system. 
 It will have its own caveats. Use wisely.  Currently supported PostgreSQL versions: 15 to 16.  Staz is a fork of Patroni.
