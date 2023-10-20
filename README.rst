@@ -1,21 +1,19 @@
 
-Tequila: A Template for PostgreSQL HA with etcd3
-------------------------------------------------
+staz: A Template for pgEdge's Spock Three AZ Clustering
+-------------------------------------------------------
 
-Tequila is a template for high availability (HA) PostgreSQL solutions using Python3. It is far from being a one-size-fits-all or plug-and-play replication system. 
-It will have its own caveats. Use wisely.  Currently supported PostgreSQL versions: 15 to 16.  Tequila is a fork of Patroni.
+Staz is a template for high availability (HA) PostgreSQL solutions using Python3. It is far from being a one-size-fits-all or plug-and-play replication system. 
+It will have its own caveats. Use wisely.  Currently supported PostgreSQL versions: 15 to 16.  Staz is a fork of Patroni.
 
 ===================================
 Technical Requirements/Installation
 ===================================
 
-Use psycopg 3.0 instead of psycopg2
+Use python3 & psycopg3
 
 ::
 
-    pip install psycopg[binary]>=3.0.0
-
-    pip install patroni[etcd3,aws]
+    pip3 install psycopg[binary]>=3.0.0
 
 Note that external tools to call in the replica creation or custom bootstrap scripts (i.e. WAL-E) should be installed independently of Patroni.
 
