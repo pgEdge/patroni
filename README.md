@@ -1,33 +1,41 @@
 [![Tests Status](https://github.com/zalando/patroni/actions/workflows/tests.yaml/badge.svg)](https://github.com/zalando/patroni/actions/workflows/tests.yaml?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/zalando/patroni/badge.svg?branch=master)](https://coveralls.io/github/zalando/patroni?branch=master)
 
+# pgedge-patroni: pgEdge's Ultra-HA Clustering Solution
 
-# pgedge-patroni: pgEdge's Spock Three AZ Clustering
+Welcome to **pgedge-patroni**, a sophisticated adaptation of Patroni tailored explicitly for pgEdge's Ultra-HA Clustering environment.
 
-Patroni is a template for high availability (HA) PostgreSQL solutions using Python. For maximum accessibility, Patroni supports a variety of distributed configuration stores like [ZooKeeper](https://zookeeper.apache.org/), [etcd](https://github.com/coreos/etcd), [Consul](https://github.com/hashicorp/consul) or [Kubernetes](https://kubernetes.io). Database engineers, DBAs, DevOps engineers, and SREs who are looking to quickly deploy HA PostgreSQL in datacenters - or anywhere else - will hopefully find it useful.
+## Overview
 
-Currently pgedge-patroni supported PostgreSQL 15 and above.
+**pgedge-patroni** leverages Patroni, a Python-based template for building highly available (HA) solutions with PostgreSQL. It streamlines the deployment and management of PostgreSQL clusters, ensuring unwavering reliability and resilience.
 
-![Image Description](pgedge-ultra-high-availability.png)
+## Key Features
+
+- Seamless integration with pgEdge's multimaster platform.
+- Fine-tuned adjustments to ensure optimal performance in an Ultra-HA environment.
+- Enhanced failover mechanisms for uninterrupted service availability.
+- Compatibility with PostgreSQL versions 15, 16, and beyond.
+
+![pgedge-ultra-high-availability](pgedge-ultra-high-availability.png)
+
+## PgEdge Enhancements
+
+pgEdge's modifications to Patroni include:
+
+- Customized configurations to support pgEdge's multimaster architecture.
+- Dynamic adjustments to PostgreSQL parameters for improved compatibility.
+- Advanced fault tolerance mechanisms to handle primary and standby failures gracefully.
 
 ## How Patroni Works
 
-Patroni originated as a fork of [Governor](https://github.com/compose/governor), the project from Compose. It includes plenty of new features.
+Patroni intelligently manages PostgreSQL instances by orchestrating replication and failover processes. It employs leader election algorithms and consensus mechanisms to maintain cluster stability and data integrity.
 
-For an example of a Docker-based deployment with Patroni, see [Spilo](https://github.com/zalando/spilo), currently in use at Zalando.
+## Contribution Guidelines
 
-For additional background info, see:
-- [Elephants on Automatic: HA Clustered PostgreSQL with Helm](https://www.youtube.com/watch?v=CftcVhFMGSY), talk by Josh Berkus and Oleksii Kliukin at KubeCon Berlin 2017
-- [PostgreSQL HA with Kubernetes and Patroni](https://www.youtube.com/watch?v=iruaCgeG7qs), talk by Josh Berkus at KubeCon 2016 (video)
-- [Feb. 2016 Zalando Tech blog post](https://tech.zalando.de/blog/zalandos-patroni-a-template-for-high-availability-postgresql/)
+We encourage contributions to **pgedge-patroni**. Please refer to our [Contribution Guidelines](CONTRIBUTING.md) for details on how to get involved.
 
-## Replication Choices
+## License
 
-Patroni uses Postgres' streaming replication, which is asynchronous by default. Patroni's asynchronous replication configuration allows for ``maximum_lag_on_failover`` settings. 
-This setting ensures failover will not occur if a follower is more than a certain number of bytes behind the leader. This setting should be increased or decreased based on business requirements. It's also possible to use synchronous replication for better durability guarantees.
+**pgedge-patroni** is licensed under the [MIT License](LICENSE). See the LICENSE file for full details.
 
-See replication modes documentation [here](https://github.com/zalando/patroni/blob/master/docs/replication_modes.rst) for details.
-
-## Applications Should Not Use Superusers
-
-When connecting from an application, always use a non-superuser. Patroni requires access to the database to function properly. By using a superuser from an application, you can potentially use the entire connection pool, including the connections reserved for superusers, with the ``superuser_reserved_connections`` setting. If Patroni cannot access the Primary because the connection pool is full, behavior will be undesirable.
+Let's collaborate to build robust, scalable, and high-performance PostgreSQL clusters with pgEdge's Ultra-HA Clustering Solution.
