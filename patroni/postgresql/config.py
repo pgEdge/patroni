@@ -953,9 +953,9 @@ class ConfigHandler(object):
             else:
                 parameters['synchronous_standby_names'] = synchronous_standby_names
 
-        # Handle hot_standby <-> replica rename
+        # Handle hot_standby <-> logical rename
         if parameters.get('wal_level') == ('hot_standby' if self._postgresql.major_version >= 90600 else 'replica'):
-            parameters['wal_level'] = 'replica' if self._postgresql.major_version >= 90600 else 'hot_standby'
+            parameters['wal_level'] = 'logical' if self._postgresql.major_version >= 90600 else 'hot_standby'
 
         # Try to recalcualte wal_keep_segments <-> wal_keep_size assuming that typical wal_segment_size is 16MB.
         # The real segment size could be estimated from pg_control, but we don't really care, because the only goal of
