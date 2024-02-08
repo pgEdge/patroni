@@ -335,15 +335,7 @@ class SlotsHandler:
         # drop old replication slots which are not presented in desired slots.
         for name in set(self._replication_slots) - set(slots):
             if not paused and not self.ignore_replication_slot(cluster, name):
-                active, dropped = self.drop_replication_slot(name)
-                if dropped:
-                    logger.info("Dropped unknown replication slot '%s'", name)
-                else:
-                    self._schedule_load_slots = True
-                    if active:
-                        logger.debug("Unable to drop unknown replication slot '%s', slot is still active", name)
-                    else:
-                        logger.error("Failed to drop replication slot '%s'", name)
+                logger.info("Ignored unknown replication slot '%s'", name)
 
         # drop slots with matching names but attributes that do not match, e.g. `plugin` or `database`.
         for name, value in slots.items():
