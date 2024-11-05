@@ -289,7 +289,7 @@ class ConfigHandler(object):
         'listen_addresses': (None, _false_validator, 90100),
         'port': (None, _false_validator, 90100),
         'cluster_name': (None, _false_validator, 90500),
-        'wal_level': ('hot_standby', EnumValidator(('hot_standby', 'replica', 'logical')), 90100),
+        'wal_level': ('logical', EnumValidator(('hot_standby', 'replica', 'logical')), 90100),
         'hot_standby': ('on', _bool_is_true_validator, 90100),
         'max_connections': (100, IntValidator(min=25), 90100),
         'max_wal_senders': (10, IntValidator(min=3), 90100),
